@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cổng thông tin Giáo viên - EduCenter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-light">
+
+<!-- Navbar dùng chung -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center pb-2 mb-4 border-bottom">
+        <div>
+            <h2 class="h3 fw-bold text-dark">Cổng thông tin Giáo viên</h2>
+            <p class="text-muted mb-0">Xin chào thầy/cô: <strong th:text="${currentUser.fullName}">Giáo viên</strong></p>
+        </div>
+        <span class="badge bg-success p-2 fs-6">
+            <i class="bi bi-person-check-fill me-1"></i> Quyền Giáo viên
+        </span>
+    </div>
+
+    <div class="row g-4">
+        <!-- Card 1: Lịch dạy -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-calendar-week-fill text-primary fs-1 mb-3"></i>
+                    <h5 class="fw-bold">Lịch dạy học</h5>
+                    <p class="text-muted small">Xem thời khóa biểu các ca dạy trong tuần</p>
+                    <button class="btn btn-outline-primary btn-sm w-100" disabled>Xem lịch dạy</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Điểm danh -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-ui-checks text-success fs-1 mb-3"></i>
+                    <h5 class="fw-bold">Điểm danh lớp</h5>
+                    <p class="text-muted small">Điểm danh học sinh có mặt, vắng, có phép</p>
+                    <button class="btn btn-outline-success btn-sm w-100" disabled>Vào điểm danh</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Nhập điểm -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
+                <div class="card-body text-center p-4">
+                    <i class="bi bi-award-fill text-warning fs-1 mb-3"></i>
+                    <h5 class="fw-bold">Sổ điểm & Đánh giá</h5>
+                    <p class="text-muted small">Nhập điểm kiểm tra, giữa kỳ, cuối kỳ</p>
+                    <button class="btn btn-outline-warning btn-sm w-100" disabled>Vào sổ điểm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

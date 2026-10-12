@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản trị hệ thống - EduCenter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .sidebar {
+            min-height: calc(100vh - 56px);
+            background-color: #212529;
+        }
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.75);
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
+            margin: 2px 10px;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            color: #ffffff;
+            background-color: #0d6efd;
+        }
+        .sidebar .nav-link i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+        .stat-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<!-- Navbar dùng chung -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar Admin -->
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse p-0">
+            <div class="pt-3">
+                <div class="px-3 pb-2 text-uppercase text-white-50 small fw-bold">Menu Quản trị</div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/admin/dashboard}">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-people-fill"></i> Học sinh</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-person-badge-fill"></i> Giáo viên</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-person-heart"></i> Phụ huynh</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-book-half"></i> Môn học</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-building"></i> Phòng học</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-easel2-fill"></i> Lớp học</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-calendar3"></i> Lịch học</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-file-earmark-check-fill"></i> Đăng ký học</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-credit-card-fill"></i> Học phí & VNPay</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-bar-chart-fill"></i> Thống kê</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4 border-bottom">
+                <div>
+                    <h2 class="h3 fw-bold text-dark">Bảng điều khiển Quản trị</h2>
+                    <p class="text-muted mb-0">Chào mừng trở lại, <strong th:text="${currentUser.fullName}">Admin</strong>!</p>
+                </div>
+                <div class="badge bg-danger p-2 fs-6">
+                    <i class="bi bi-shield-check me-1"></i> Quyền Quản trị viên
+                </div>
+            </div>
+
+            <!-- Thống kê nhanh -->
+            <div class="row g-3 mb-4">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card stat-card p-3 bg-white">
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-primary bg-opacity-10 p-3 text-primary me-3">
+                                <i class="bi bi-people fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-muted mb-1 small text-uppercase">Học sinh</h6>
+                                <h3 class="fw-bold mb-0">5</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card stat-card p-3 bg-white">
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-success bg-opacity-10 p-3 text-success me-3">
+                                <i class="bi bi-person-badge fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-muted mb-1 small text-uppercase">Giáo viên</h6>
+                                <h3 class="fw-bold mb-0">3</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card stat-card p-3 bg-white">
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-warning bg-opacity-10 p-3 text-warning me-3">
+                                <i class="bi bi-easel2 fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-muted mb-1 small text-uppercase">Lớp đang mở</h6>
+                                <h3 class="fw-bold mb-0">3</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card stat-card p-3 bg-white">
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle bg-info bg-opacity-10 p-3 text-info me-3">
+                                <i class="bi bi-envelope-paper fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-muted mb-1 small text-uppercase">Đơn chờ duyệt</h6>
+                                <h3 class="fw-bold mb-0 text-danger">1</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Khối thông báo khởi tạo thành công -->
+            <div class="alert alert-success border-0 shadow-sm p-4 rounded-3">
+                <h5 class="fw-bold"><i class="bi bi-check-circle-fill me-2 text-success"></i>Hệ thống đã kết nối MySQL thành công!</h5>
+                <p class="mb-2">Bạn đã đăng nhập thành công với vai trò <strong>ROLE_ADMIN</strong>. Cơ sở dữ liệu <code>educenter_db</code> đã được kết nối với tài khoản quản trị.</p>
+                <hr>
+                <small class="text-muted">Spring Security và Thymeleaf đã sẵn sàng hoạt động cho Phase tiếp theo.</small>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
